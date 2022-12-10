@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import image from '../../images/ranobe-prew.png';
-import { AiFillEye, AiFillStar } from 'react-icons/all';
+import { AiFillEye, AiFillStar } from 'react-icons/ai';
 
 export const Card = () => {
   return (

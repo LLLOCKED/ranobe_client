@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import img from '../src/images/ranobe.jpg';
 import imgPrew from '../src/images/ranobe-prew.png';
-import { AiFillStar } from 'react-icons/all';
+import { AiFillStar } from 'react-icons/ai';
 
 export const Popular = () => {
   return (

@@ -10,8 +10,8 @@ interface IListCard {
 export const ListCard = ({title}:IListCard) => {
   return (
       <div>
-          <div className='border-b-2 border-black py-2'>
-              <Link className='flex justify-between items-center hover:text-[#F0C348]' href='/latest'>
+          <div className='border-b-2 border-gray-300 py-2'>
+              <Link className='flex justify-between items-center hover:text-amber-500' href='/latest'>
                   <span className='text-2xl font-bold'>{title}</span>
                   <span>Більше 🠒</span>
               </Link>

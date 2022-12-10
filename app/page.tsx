@@ -1,4 +1,3 @@
-import '../styles/globals.css';
 import { Popular } from './Popular';
 import { Home } from './Home';
 
