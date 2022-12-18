@@ -6,7 +6,7 @@ type Inputs = {
   email: string;
   password: string;
 };
-
+ 
 export const Login = () => {
   const [loginUser, { isLoading }] = useLoginMutation();
 
