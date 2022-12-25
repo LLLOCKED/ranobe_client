@@ -1,6 +1,4 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { url } from 'inspector';
-import { IUser } from '../types/IUser';
 
 interface CreateRanobeResponse {
     message: string;

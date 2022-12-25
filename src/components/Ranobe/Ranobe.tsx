@@ -4,6 +4,7 @@ import Image from 'next/image';
 import image from '../../images/ranobe-prew.png';
 import { FC } from 'react';
 import { useGetRanobeQuery } from 'src/store/services/ranobe.service';
+import { useGetChaptersOfRanobeQuery } from 'src/store/services/chapter.service';
 
 interface IRanobeProps {
   id: string;
@@ -11,6 +12,7 @@ interface IRanobeProps {
 
 export const Ranobe: FC<IRanobeProps> = ({ id }) => {
   const { data, isLoading } = useGetRanobeQuery(id);
+  const { data: chapters, isLoading: isLoadingChapters } = useGetChaptersOfRanobeQuery(id);
 
   if (isLoading) {
     return <div className='bg-white p-12'>Loading...</div>;
@@ -18,7 +20,7 @@ export const Ranobe: FC<IRanobeProps> = ({ id }) => {
 
   return (
     <div className='flex flex-col gap-12 bg-white text-black p-10'>
-      <div className='flex gap-12 bg-gray-50 p-4 rounded-sm'>
+      <div className='flex gap-12 bg-gray-50 p-4 rounded-sm shadow-xl'>
         <div>
           <Image width={250} height={350} alt='Cover' src={image} />
         </div>
@@ -56,11 +58,23 @@ export const Ranobe: FC<IRanobeProps> = ({ id }) => {
         </div>
       </div>
       <div>
-        <h2 className='font-bold text-2xl border-b pb-2'>Chapters 10</h2>
+        <h2 className='font-bold text-2xl border-b pb-2'>Chapters List</h2>
         <div>
           <ul className='divide-y divide-slate-200'>
-            <li className='py-2'>Chapter 1</li>
-            <li className='py-2'>Chapter 2</li>
+            {chapters?.map((chapter) => {
+              return (
+                <li key={chapter.id} className='py-3'>
+                  <div className='flex justify-between'>
+                    <div className='flex gap-2'>
+                      <span>Volume {chapter.volume} Chapter {chapter.number}</span>
+                      <span>-</span>
+                      <span>{chapter.title}</span>
+                    </div>
+                    <div>20.12.2022</div>
+                  </div>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </div>
