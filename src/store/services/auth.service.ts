@@ -40,9 +40,12 @@ export const authApi = createApi({
         }),
         async onQueryStarted(arqs, { dispatch, queryFulfilled }) {
           try {
-            await queryFulfilled;
-            await dispatch(authApi.endpoints.profile.initiate(null));
-          } catch (e) {}
+            const {data} = await queryFulfilled;
+            dispatch(authApi.endpoints.profile.initiate({}));
+            
+          } catch (e) {
+            console.log(e)
+          }
         }
       }),
       profile: builder.query<IUser, any>({

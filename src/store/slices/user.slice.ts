@@ -24,6 +24,7 @@ export const userSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addMatcher(authApi.endpoints.profile.matchFulfilled, (state, { payload }) => {
+      
       state.user = payload;
       state.isLogged = true;
     });

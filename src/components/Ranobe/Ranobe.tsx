@@ -5,6 +5,7 @@ import image from '../../images/ranobe-prew.png';
 import { FC } from 'react';
 import { useGetRanobeQuery } from 'src/store/services/ranobe.service';
 import { useGetChaptersOfRanobeQuery } from 'src/store/services/chapter.service';
+import Link from 'next/link';
 
 interface IRanobeProps {
   id: string;
@@ -64,14 +65,16 @@ export const Ranobe: FC<IRanobeProps> = ({ id }) => {
             {chapters?.map((chapter) => {
               return (
                 <li key={chapter.id} className='py-3'>
+                  <Link href={`/ranobe/${id}/chapter/${chapter.id}`}>
                   <div className='flex justify-between'>
                     <div className='flex gap-2'>
                       <span>Volume {chapter.volume} Chapter {chapter.number}</span>
                       <span>-</span>
                       <span>{chapter.title}</span>
                     </div>
-                    <div>20.12.2022</div>
+                    <div>{new Date(chapter.createdAt).toLocaleDateString()}</div>
                   </div>
+                  </Link>
                 </li>
               );
             })}

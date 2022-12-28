@@ -62,7 +62,8 @@ export const ranobeApi = createApi({
                 query: (id) => ({
                     url: `/${id}`
                 })
-            })
+            }),
+        
         };
     }
 });
