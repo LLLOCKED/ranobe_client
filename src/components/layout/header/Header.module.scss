@@ -1,0 +1,8 @@
+.header{
+    @apply text-[#160C28] bg-[#EFCB68];
+}
+
+.container__heder{
+    @apply relative container mx-auto px-4 py-6 flex flex-col lg:flex-row items-center justify-between;
+}
+

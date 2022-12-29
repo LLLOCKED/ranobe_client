@@ -1,0 +1,26 @@
+.footer {
+  @apply absolute bottom-0 left-0 right-0 text-[#160C28] bg-[#EFCB68] text-sm;
+}
+
+.footerContainer {
+  @apply container mx-auto px-10 py-12 flex flex-col lg:flex-row justify-between items-center;
+
+  > div {
+    > ul {
+      @apply flex flex-col lg:flex-row text-center lg:space-x-8;
+
+      > li {
+        @apply relative;
+
+        &::after {
+          content: '';
+          @apply absolute left-0 -bottom-1 h-0.5 w-0 bg-black transition-all duration-200;
+        }
+
+        &:hover::after {
+          @apply w-full;
+        }
+      }
+    }
+  }
+}

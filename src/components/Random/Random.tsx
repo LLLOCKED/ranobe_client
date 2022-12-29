@@ -1,9 +1,8 @@
 import Image from 'next/image';
-import img from '../src/images/ranobe.jpg';
-import imgPrew from '../src/images/ranobe-prew.png';
+import imgPrew from '../../images/ranobe-prew.png';
 import { AiFillStar } from 'react-icons/ai';
 
-export const Popular = () => {
+const Random = () => {
   return (
     <div className='w-full relative'>
       <Image className='object-cover h-[400px] blur-[2px] w-full' src={imgPrew} alt='popular' />
@@ -33,3 +32,5 @@ export const Popular = () => {
     </div>
   );
 };
+
+export default Random;

@@ -1,0 +1,12 @@
+.text {
+  @apply relative uppercase tracking-widest;
+
+  &::after {
+    content: '';
+    @apply absolute left-0 -bottom-1 h-0.5 w-0 bg-black transition-all duration-200;
+  }
+
+  &:hover::after {
+    @apply w-full;
+  }
+}

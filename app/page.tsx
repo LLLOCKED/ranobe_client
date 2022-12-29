@@ -1,11 +1,11 @@
-import { Popular } from './Popular';
-import { Home } from './Home';
+import HomePage from '@pages/HomePage';
 
-export default function Page() {
+const Page = () => {
   return (
     <section>
-      <Popular />
-      <Home />
+      <HomePage />
     </section>
   );
-}
+};
+
+export default Page;
