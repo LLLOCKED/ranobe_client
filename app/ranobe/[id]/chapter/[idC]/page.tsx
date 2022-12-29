@@ -1,12 +1,5 @@
-import { Chapter } from '@components/Chapter/Chapter';
+import ChapterPage from '@pages/ChapterPage';
 
 export default function Page({ params }: { params: { idC: string } }) {
-  return (
-    <section>
-      <div className='container mx-auto py-6 px-10'>
-        <Chapter id={params.idC} />
-      </div>
-    </section>
-  );
+  return <ChapterPage params={params} />;
 }
- 

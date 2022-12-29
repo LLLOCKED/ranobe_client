@@ -1,11 +1,7 @@
-import { Profile } from "@components/Profile/Profile";
+import ProfilePage from "@pages/ProfilePage";
 
 export default function Page() {
   return (
-    <section>
-      <div className='container mx-auto py-6 px-10'>
-                <Profile />
-            </div>
-    </section>
+    <ProfilePage />
   );
 }
