@@ -1,0 +1,11 @@
+.container-bg {
+  @apply w-full h-[400px] relative;
+
+  .bg {
+    @apply object-cover blur-[2px] ;
+  }
+
+  .card {
+    @apply absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex items-center space-x-4 bg-white shadow-md w-2/3 h-3/4;
+  }
+}

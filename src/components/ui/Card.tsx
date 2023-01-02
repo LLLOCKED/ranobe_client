@@ -8,8 +8,9 @@ interface ICard {
   id: string;
   title: string;
   description: string;
-  updatedAt: Date;
+  createdAt: Date;
   image: string | null;
+  views: number;
 }
 
 const updatedAgo = (days: number) => {
@@ -47,9 +48,9 @@ const updatedAgo = (days: number) => {
   return Math.round(days) + ' днів тому';
 };
 
-export const Card: FC<ICard> = ({ id, title, description, updatedAt, image }) => {
+export const Card: FC<ICard> = ({ id, title, description, createdAt, image, views }) => {
   // @ts-ignore
-  const convertDate = (new Date() - new Date(updatedAt)) / (1000 * 3600 * 24);
+  const convertDate = (new Date() - new Date(createdAt)) / (1000 * 3600 * 24);
 
   return (
     <div className='bg-white p-2 flex flex-col space-y-2 shadow-md cursor-pointer border hover:border hover:border-amber-300 group'>
@@ -74,16 +75,16 @@ export const Card: FC<ICard> = ({ id, title, description, updatedAt, image }) =>
             </div>
           </div>
           <div>
-            <span className='font-bold'>{title}</span>
+            <span className='font-bold line-clamp-1'>{title}</span>
           </div>
-          <div className='text-sm flex items-center space-x-1'>
+          {/* <div className='text-sm flex items-center space-x-1'>
             <AiFillStar className='text-orange-400' />
             <span>8.2</span>
-          </div>
+          </div> */}
           <div className='flex justify-between items-center text-sm text-gray-400'>
             <div className='flex items-center space-x-2'>
               <AiFillEye />
-              <span>32</span>
+              <span>{views}</span>
             </div>
             <span>{updatedAgo(convertDate)} </span>
           </div>

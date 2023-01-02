@@ -1,0 +1,7 @@
+.list{
+    @apply flex gap-2;
+
+    > li{
+        @apply px-2 py-1 bg-[#087E8B] text-[#F5F5F5] rounded-xl;
+    }
+}

@@ -6,14 +6,17 @@ import { useGetRanobesQuery } from '@store/services/ranobe.service';
 export const Home = () => {
   const { data: last, isLoading: isLoadingLast } = useGetRanobesQuery({
     take: 10,
-    orderByUpdated: 'desc'
+    orderByCreated: 'desc'
   });
-  const { data: popular } = useGetRanobesQuery({ take: 10 });
+  const { data: popular, isLoading: isLoadingPopular } = useGetRanobesQuery({
+    take: 10,
+    orderByViews: 'desc'
+  });
 
   return (
     <div className='container mx-auto py-6 px-10'>
-      {!isLoadingLast ? <ListCard title='Останні' data={last} /> : <span>Loading...</span>}
-      <ListCard title='Популярні' data={popular} />
+      <ListCard title='Останні' data={last} isLoading={isLoadingLast} />
+      <ListCard title='Популярні' data={popular} isLoading={isLoadingPopular} />
     </div>
   );
 };

@@ -54,9 +54,15 @@ export const chapterApi = createApi({
                 query: (id) => ({
                     url: `/${id}`
                 })
+            }),
+            getChaptersByUser: builder.query<GetChapterResponse[], any>({
+                query: () => ({
+                    url: '/my/list',
+                    credentials: 'include'
+                })
             })
         };
     }
 });
 
-export const {  useGetChapterQuery, useGetChaptersOfRanobeQuery } = chapterApi;
+export const {  useGetChapterQuery, useGetChaptersOfRanobeQuery, useGetChaptersByUserQuery } = chapterApi;

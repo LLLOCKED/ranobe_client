@@ -17,6 +17,7 @@ export interface GetRanobeResponse {
     createdAt: Date;
     updatedAt: Date;
     authorId: string;
+    views: number;
 }
 
 interface GetRanobesRequest {
@@ -24,6 +25,7 @@ interface GetRanobesRequest {
     skip?: number;
     orderByUpdated?: 'asc' | 'desc';
     orderByCreated?: 'asc' | 'desc';
+    orderByViews?: 'asc' | 'desc';
 }
 
 interface CreateRanobeRequest {
@@ -48,13 +50,14 @@ export const ranobeApi = createApi({
                 })
             }),
             getRanobes: builder.query<GetRanobeResponse[], GetRanobesRequest>({
-                query({ take, skip, orderByUpdated, orderByCreated }) {
+                query({ take, skip, orderByUpdated, orderByCreated, orderByViews }) {
                     const pSkip = skip ? `&skip=${skip}` : '';
                     const pOrderByUpdated = orderByUpdated ? `&orderByUpdated=${orderByUpdated}` : '';
                     const pOrderByCreated = orderByCreated ? `&orderByCreated=${orderByCreated}` : '';
+                    const pOrderByViews = orderByViews ? `&orderByViews=${orderByViews}` : '';
 
                     return {
-                        url: `/?take=${take}${pSkip}${pOrderByCreated}${pOrderByUpdated}`
+                        url: `/?take=${take}${pSkip}${pOrderByCreated}${pOrderByUpdated}${pOrderByViews}`
                     };
                 }
             }),
@@ -63,9 +66,16 @@ export const ranobeApi = createApi({
                     url: `/${id}`
                 })
             }),
+
+            getRanobesByUser: builder.query<GetRanobeResponse[], any>({
+                query: () => ({
+                    url: '/my/list',
+                    credentials: 'include'
+                })
+            })
         
         };
     }
 });
 
-export const { useCreateRanobeMutation, useGetRanobesQuery, useGetRanobeQuery } = ranobeApi;
+export const { useCreateRanobeMutation, useGetRanobesQuery, useGetRanobeQuery, useGetRanobesByUserQuery } = ranobeApi;
