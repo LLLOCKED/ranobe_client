@@ -1,5 +1,5 @@
 .footer {
-  @apply absolute bottom-0 left-0 right-0 text-[#160C28] bg-[#EFCB68] text-sm;
+  @apply absolute bottom-0 left-0 right-0 text-[#F5F5F5] bg-[#3C3C3C] text-sm;
 }
 
 .footerContainer {
@@ -14,7 +14,7 @@
 
         &::after {
           content: '';
-          @apply absolute left-0 -bottom-1 h-0.5 w-0 bg-black transition-all duration-200;
+          @apply absolute left-0 -bottom-1 h-0.5 w-0 bg-[#F5F5F5] transition-all duration-200;
         }
 
         &:hover::after {

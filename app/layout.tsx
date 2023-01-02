@@ -12,7 +12,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html className={` ${karla.className} h-full`}>
       <head />
-      <body className='relative min-h-full pb-44 bg-[#E1EFE6]'>
+      <body className='relative min-h-full pb-44 bg-[#F5F5F5]'>
         <ReduxProvider>
           <Header />
           <AuthVerify />
