@@ -2,8 +2,8 @@ import { ILinkItem } from "./menu-item/menu-item.interface";
 
 export const menu: ILinkItem[] = [
     {
-        link: '/',
-        name: 'Останні'
+        link: '/popular',
+        name: 'Популярні'
     },
     {
         link: '/new',

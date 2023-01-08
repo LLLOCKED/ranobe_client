@@ -1,11 +1,11 @@
-import { Login } from "@components/Login/Login";
-import Link from "next/link";
+import { Login } from '@components/Login/Login';
+import Link from 'next/link';
 
 const LoginPage = () => {
   return (
     <section>
-      <div className='container mx-auto flex justify-center'>
-        <div className='my-4 p-8 flex flex-col w-1/2 bg-white '>
+      <div className='container mx-auto py-10 flex justify-center'>
+        <div className=' flex flex-col w-1/2 bg-white p-10'>
           <Login />
 
           <Link className='text-center' href='/signup'>

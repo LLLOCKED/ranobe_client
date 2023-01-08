@@ -2,10 +2,14 @@
 
 import Image from 'next/image';
 import { FC } from 'react';
-import { useGetRanobeQuery } from 'src/store/services/ranobe.service';
+import { useGetRanobeQuery, usePublishRanobeMutation } from 'src/store/services/ranobe.service';
 import { useGetChaptersOfRanobeQuery } from 'src/store/services/chapter.service';
 import ChaptersList from '@components/ui/chapters-list/ChaptersList';
 import CategoriesList from '@components/ui/categories-list/CategoriesList';
+import { useSelector } from 'react-redux';
+import { RootState } from '@store/store';
+import Button from '@components/ui/button/Button';
+import { useRouter } from 'next/navigation';
 
 interface IRanobeProps {
   id: string;
@@ -16,8 +20,20 @@ const stringReplace = (string: string | undefined) => {
 };
 
 export const Ranobe: FC<IRanobeProps> = ({ id }) => {
+
+  const router = useRouter();
+
   const { data, isLoading } = useGetRanobeQuery(id);
   const { data: chapters, isLoading: isLoadingChapters } = useGetChaptersOfRanobeQuery(id);
+
+  const [publishRanobe] = usePublishRanobeMutation();
+
+  const user = useSelector((state: RootState) => state.userState.user);
+
+  const onPublish = (id: string) => {
+    publishRanobe(id);
+    router.push('/admin');
+  }
 
   if (isLoading) {
     return <div className='bg-white p-12'>Loading...</div>;
@@ -44,7 +60,7 @@ export const Ranobe: FC<IRanobeProps> = ({ id }) => {
               Статус новели:{' '}
               <span
                 className={` px-2 py-1 font-normal rounded-xl ${
-                  data?.status === 'ONGOING' ? 'bg-yellow-300' : 'bg-green-400'
+                  data?.status === 'ONGOING' ? 'bg-[#fdff72]' : 'bg-green-400'
                 }`}
               >
                 {data?.status === 'ONGOING' ? 'Онгоїнг' : 'Завершено'}
@@ -54,7 +70,7 @@ export const Ranobe: FC<IRanobeProps> = ({ id }) => {
               Статус перекладу:{' '}
               <span
                 className={` px-2 py-1 font-normal rounded-xl ${
-                  data?.status === 'ONGOING' ? 'bg-yellow-300' : 'bg-green-400'
+                  data?.status === 'ONGOING' ? 'bg-[#fdff72]' : 'bg-green-400'
                 }`}
               >
                 {data?.tStatus === 'ONGOING' ? 'Онгоїнг' : 'Завершено'}
@@ -62,6 +78,11 @@ export const Ranobe: FC<IRanobeProps> = ({ id }) => {
             </p>
           </div>
           <p>{stringReplace(data?.description)}</p>
+          {user?.role === 'ADMIN' && !data?.published ? (
+            <Button title='Опублікувати' click={() => onPublish(id)} />
+          ) : (
+            ''
+          )}
         </div>
       </div>
       <div>

@@ -1,19 +1,21 @@
 import Link from 'next/link';
-import { Card } from '@components/ui/Card';
-import { GetRanobeResponse } from '../../store/services/ranobe.service';
-import Spinner from './spinner/Spinner';
 
-interface IListCard {
+import { GetRanobeResponse } from '../../store/services/ranobe.service';
+import Spinner from '../ui/spinner/Spinner';
+import { Card } from './card/Card';
+
+interface ICardsList {
   title: string;
   data?: GetRanobeResponse[];
   isLoading: boolean;
+  link: string;
 }
 
-export const ListCard = ({ title, data, isLoading }: IListCard) => {
+export const CardsList = ({ title, data, isLoading, link }: ICardsList) => {
   return (
     <div>
       <div className='border-b-2 border-gray-300 py-2'>
-        <Link className='flex justify-between items-center hover:text-[#FF5A5F]' href='/latest'>
+        <Link className='flex justify-between items-center hover:text-[#FF5A5F]' href={link}>
           <span className='text-2xl font-bold'>{title}</span>
           <span>Більше 🠒</span>
         </Link>
@@ -28,5 +30,5 @@ export const ListCard = ({ title, data, isLoading }: IListCard) => {
         <Spinner />
       )}
     </div>
-  );  
+  );
 };

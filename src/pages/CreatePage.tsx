@@ -1,10 +1,12 @@
-import { Create } from "@components/Create/Create";
+import { Create } from '@components/Create/Create';
 
 const CreatePage = () => {
   return (
     <section>
-      <div className='container mx-auto py-6 px-10'>
-        <Create />
+      <div className='container mx-auto py-10 flex justify-center'>
+        <div className='flex flex-col w-3/4 bg-white p-10'>
+          <Create />
+        </div>
       </div>
     </section>
   );

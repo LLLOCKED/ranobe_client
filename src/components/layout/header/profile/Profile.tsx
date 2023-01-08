@@ -24,14 +24,6 @@ const Profile: FC = () => {
     router.push('/');
   };
 
-  const AdminLink: FC = () => {
-    return (
-      <span>
-        <Link href='/admin'>Адмінка</Link>
-      </span>
-    );
-  };
-
   return (
     <div>
       {!user ? (
@@ -39,10 +31,9 @@ const Profile: FC = () => {
           <Link className={styles.text} href='/login'>Вхід</Link>
         </span>
       ) : (
-        <div className='flex gap-10'>
-          {user.role === 'ADMIN' ? <AdminLink /> : ''}
-          <span>
-            <Link className={styles.text} href='/profile'>{user.name}</Link>
+        <div className='flex items-center gap-10'>
+          <span className={styles.text}>
+            <Link  href='/profile'>{user.name}</Link>
           </span>
           <button className={styles.text} onClick={clickLogout}>Вихід</button>
         </div>

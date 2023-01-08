@@ -1,6 +1,6 @@
 'use client';
 
-import { ListCard } from '@components/ui/ListCard';
+import { CardsList } from '@components/cards-list/CardsList';
 import { useGetRanobesQuery } from '@store/services/ranobe.service';
 
 export const Home = () => {
@@ -15,8 +15,8 @@ export const Home = () => {
 
   return (
     <div className='container mx-auto py-6 px-10'>
-      <ListCard title='Останні' data={last} isLoading={isLoadingLast} />
-      <ListCard title='Популярні' data={popular} isLoading={isLoadingPopular} />
+      <CardsList title='Нові' data={last} isLoading={isLoadingLast} link='/new' />
+      <CardsList title='Популярні' data={popular} isLoading={isLoadingPopular} link='/popular' />
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import { AiFillEye, AiFillStar } from 'react-icons/ai';
-import cover from '../../images/ranobe-prew.png'
+import { AiFillEye } from 'react-icons/ai';
+import cover from '../../../images/ranobe-prew.png';
 import { FC } from 'react';
 import Link from 'next/link';
 
@@ -41,7 +41,7 @@ const updatedAgo = (days: number) => {
     return 'день тому';
   }
 
-  if (2 <= days && days <= 4) {
+  if (2 <= days && days <= 5) {
     return Math.round(days) + ' дні тому';
   }
 
@@ -69,7 +69,7 @@ export const Card: FC<ICard> = ({ id, title, description, createdAt, image, view
             <div className='hidden group-hover:flex absolute bg-black/[.80] top-0 left-0 w-full h-full text-white py-10 px-4 flex-col justify-between space-y-4'>
               <span>Опис:</span>
               <span className='text-sm line-clamp-6'>{description}</span>
-              <span className='text-sm text-amber-400 hover:text-amber-600'>
+              <span className='text-sm text-[#FF5A5F] hover:text-[#ff9498]'>
                 Дізнатися більше...
               </span>
             </div>

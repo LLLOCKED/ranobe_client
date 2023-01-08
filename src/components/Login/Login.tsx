@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
@@ -7,11 +7,13 @@ import { useSelector } from 'react-redux';
 import { RootState } from 'src/store/store';
 import { useLoginMutation } from '../../store/services/auth.service';
 
+import styles from './Login.module.scss';
+
 type Inputs = {
   email: string;
   password: string;
 };
- 
+
 export const Login = () => {
   const router = useRouter();
 
@@ -35,12 +37,12 @@ export const Login = () => {
     router.push('/');
   };
   return (
-    <form className='flex flex-col space-y-4' onSubmit={handleSubmit(onSubmit)}>
+    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
       <input placeholder='email' type='email' {...register('email', { required: true })} />
       <input placeholder='password' type='password' {...register('password', { required: true })} />
       {/*{errors.email && <span>Email field is required</span>}*/}
       {/*{errors.password && <span>Password field is required</span>}*/}
-      <input className='bg-orange-300' type='submit' />
+      <input className='bg-[#087E8B] text-[#F5F5F5] cursor-pointer' type='submit' />
     </form>
   );
 };

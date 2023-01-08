@@ -4,8 +4,8 @@ import Link from "next/link";
 const SignupPage = () => {
     return(
         <section>
-        <div className='container mx-auto flex justify-center'>
-          <div className='my-4 p-8 flex flex-col w-1/2 bg-white '>
+        <div className='container mx-auto  py-10 flex justify-center'>
+          <div className=' p-10 flex flex-col w-1/2 bg-white '>
             <Signup />
   
             <Link className='text-center' href='/login'>
